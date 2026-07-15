@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Digital Recipe Book</title>
+    <title>Culinary Keep - Your Digital Recipe Book</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,12 +17,28 @@
     </header>
 
     <main class="container">
+        <!-- Recipe Form Section -->
         <section class="recipe-form-section">
-            <h2>Add a New Recipe</h2>
+            <h2>Create New Recipe</h2>
             <form id="recipe-form">
                 <div class="form-group">
                     <label for="recipe-title">Recipe Title</label>
-                    <input type="text" id="recipe-title" placeholder="e.g., Classic Chocolate Chip Cookies" required>
+                    <input type="text" id="recipe-title" placeholder="e.g., Classic Fudgy Brownies" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="recipe-prep">Prep Time</label>
+                        <input type="text" id="recipe-prep" placeholder="e.g., 15 mins" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-cook">Cook Time</label>
+                        <input type="text" id="recipe-cook" placeholder="e.g., 20 mins" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-servings">Servings</label>
+                        <input type="text" id="recipe-servings" placeholder="e.g., 4 people" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -29,31 +48,37 @@
 
                 <div class="form-group">
                     <label for="recipe-ingredients">Ingredients</label>
-                    <textarea id="recipe-ingredients" rows="4" placeholder="Enter ingredients (one per line)" required></textarea>
+                    <textarea id="recipe-ingredients" rows="4" placeholder="Enter ingredients (One per line)" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="recipe-instructions">Instructions</label>
-                    <textarea id="recipe-instructions" rows="4" placeholder="Describe the steps to cook..." required></textarea>
+                    <textarea id="recipe-instructions" rows="4" placeholder="Describe the cooking steps clearly..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Save Recipe</button>
             </form>
         </section>
 
+        <!-- Recipe Display Section -->
         <section class="recipe-display-section">
             <h2>Your Recipes</h2>
             <div id="recipes-container" class="recipes-grid">
+                <!-- Recipes inject here -->
             </div>
         </section>
     </main>
 
+    <!-- Interactive Recipe Detail Modal Pop-up -->
+    <div id="recipe-modal" class="modal-backdrop">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-body-content">
+                <!-- Injected via JavaScript dynamically -->
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
