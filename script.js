@@ -99,7 +99,7 @@ const BUILT_IN_RECIPES = [
         prepTime: "10 mins", cookTime: "0 mins", servings: "4 servings",
         image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600",
         ingredients: ["3 ripe avocados", "1 lime, juiced", "1/2 cup diced onion", "1/4 cup chopped fresh cilantro", "1 diced roma tomato", "1 bag tortilla chips"],
-        instructions: "1. Mash the avocado flesh in a medium bowl with a fork.\n2. Stir in the lime juice, salt, onions, and cilantro.\n3. Gently fold in the tomatoes.\n4. Let sit for 10 minutes before serving with chips."
+        instructions: "1. Flatten avocado flesh in a bowl using a fork.\n2. Mix in lime juice, salt, onions, and fresh cilantro.\n3. Gently mix in diced tomatoes.\n4. Allow to sit 10 minutes, then serve alongside crunchy tortilla chips."
     },
     {
         id: 12,
@@ -197,7 +197,7 @@ window.openModal = function(id, event) {
             <div class="modal-meta-row">
                 <span class="tag">⏱️ Prep Time: ${finalPrep}</span>
                 <span class="tag cook">🍳 Cook Time: ${finalCook}</span>
-                <span class="tag" style="background:#edf2f7; color:#4a5568; border-color:#e2e8f0;">👥 Servings: ${finalServes}</span>
+                <span class="tag status-tag">👥 Servings: ${finalServes}</span>
             </div>
             
             <h4>Ingredients Required</h4>

@@ -1,23 +1,24 @@
-/* --- Premium Theme Color Palette & Variables --- */
+/* --- Restored Vibrant Color Palette & Variables --- */
 :root {
     --primary: #e76f51;         
     --primary-dark: #cf5e43;    
     --secondary: #2a9d8f;       
-    --bg-main: #fcf8f2;         
+    --secondary-dark: #1d665d;
+    --bg-main: #fdfaf5;         
     --bg-card: #ffffff;
     --text-main: #2b2d42;
-    --text-muted: #8d99ae;
-    --border-color: #f0eae1;    
+    --text-muted: #6c757d;
+    --border-color: #f2ebe1;    
     --radius-lg: 16px;
     --radius-md: 10px;
     --radius-sm: 6px;
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
-    --shadow-md: 0 10px 25px rgba(231, 111, 81, 0.06);
-    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 10px 30px rgba(231, 111, 81, 0.08);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Core Reset & Normalization --- */
+/* --- Global Reset & Typography --- */
 * {
     margin: 0;
     padding: 0;
@@ -32,31 +33,33 @@ body {
     padding-bottom: 5rem;
 }
 
+/* --- Vivid Header Banner --- */
 header {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #f4a261 0%, var(--primary) 100%);
     color: white;
     text-align: center;
-    padding: 4rem 1rem 5.5rem 1rem; 
-    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
+    padding: 4.5rem 1rem 6rem 1rem; 
+    box-shadow: 0 4px 20px rgba(231, 111, 81, 0.15);
 }
 
 header h1 {
-    font-size: 2.75rem;
+    font-size: 2.85rem;
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
 header p {
-    font-size: 1.15rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    opacity: 0.95;
     font-weight: 500;
 }
 
-/* --- Layout Grid Alignment Core --- */
+/* --- Layout Grid --- */
 .container {
     max-width: 1600px; 
-    margin: -3rem auto 0 auto; 
+    margin: -3.5rem auto 0 auto; 
     padding: 0 1.5rem;
     display: grid;
     grid-template-columns: 1fr;
@@ -69,13 +72,13 @@ header p {
 .recipe-form-section,
 .recipe-display-section {
     background: var(--bg-card);
-    padding: 2.25rem;
+    padding: 2.5rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
 }
 
-/* --- Sticky Sidebar Form Panel --- */
+/* --- Sticky Sidebar Form --- */
 @media (min-width: 992px) {
     .recipe-form-section {
         position: sticky;
@@ -86,7 +89,7 @@ header p {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: 800;
     color: #1d3557;
     margin-bottom: 1.75rem;
@@ -94,7 +97,7 @@ h2 {
     padding-bottom: 0.6rem;
 }
 
-/* --- Elegant Form Components --- */
+/* --- Form Fields --- */
 .form-group {
     margin-bottom: 1.25rem;
 }
@@ -115,7 +118,7 @@ h2 {
     font-weight: 700;
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
-    color: var(--secondary); 
+    color: var(--secondary-dark); 
     white-space: nowrap; 
 }
 
@@ -127,7 +130,7 @@ h2 {
     border-radius: var(--radius-md);
     font-size: 0.95rem;
     color: var(--text-main);
-    background-color: #fffcf9;
+    background-color: #fffdfb;
     transition: var(--transition);
 }
 
@@ -150,16 +153,16 @@ h2 {
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+    box-shadow: 0 4px 12px rgba(231, 111, 81, 0.25);
 }
 
 .btn-submit:hover {
     background-color: var(--primary-dark);
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(231, 111, 81, 0.4);
+    box-shadow: 0 6px 16px rgba(231, 111, 81, 0.35);
 }
 
-/* --- Clean Modern 3-Column Recipe Grid --- */
+/* --- Recipe Card Displays --- */
 .recipes-grid {
     display: grid;
     grid-template-columns: 1fr; 
@@ -181,16 +184,16 @@ h2 {
 
 .recipe-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(231, 111, 81, 0.2);
 }
 
-/* Keeps all recipe photos at a constant cinematic crop scale ratio */
 .recipe-img-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background-color: #eaeaea;
+    background-color: #f4eae1;
 }
 
 .recipe-img {
@@ -201,7 +204,7 @@ h2 {
 }
 
 .recipe-card:hover .recipe-img {
-    transform: scale(1.04);
+    transform: scale(1.03);
 }
 
 .recipe-content {
@@ -215,41 +218,47 @@ h2 {
     color: #1d3557;
     font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
     line-height: 1.3;
 }
 
-/* Elegant Metadata Styling */
+/* Richer, Vibrant Tag Colors with Enhanced Text Contrast */
 .recipe-meta-tags {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .tag {
-    background: #fdf2ee;
-    color: var(--primary);
+    background: #ffeee8;
+    color: #b3391e;
     padding: 0.45rem 0.75rem;
     border-radius: var(--radius-sm);
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    border: 1px solid rgba(231, 111, 81, 0.08);
+    border: 1px solid rgba(231, 111, 81, 0.2);
 }
 
 .tag.cook {
-    background: #eaf6f4;
-    color: var(--secondary);
-    border: 1px solid rgba(42, 157, 143, 0.08);
+    background: #e6f6f4;
+    color: var(--secondary-dark);
+    border: 1px solid rgba(42, 157, 143, 0.25);
 }
 
+.status-tag {
+    background: #edf2f7; 
+    color: #2d3748; 
+    border: 1px solid #e2e8f0;
+}
+
+/* Details Hint Link */
 .click-hint {
-    color: var(--secondary);
-    font-size: 0.85rem;
-    text-decoration: none;
+    color: var(--secondary-dark);
+    font-size: 0.9rem;
     margin-top: auto; 
     margin-bottom: 1.25rem;
     font-weight: 700;
@@ -260,13 +269,14 @@ h2 {
 
 .recipe-card:hover .click-hint {
     color: var(--primary);
-    transform: translateX(3px);
+    transform: translateX(4px);
 }
 
+/* Crisp Crimson Outline Actions Button */
 .btn-delete {
-    background: #f8d7da;
-    color: #b7094c;
-    border: 1px solid rgba(183, 9, 76, 0.1);
+    background: transparent;
+    color: #c1121f;
+    border: 1.5px solid #f28482;
     padding: 0.65rem;
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -277,11 +287,12 @@ h2 {
 }
 
 .btn-delete:hover {
-    background: #b7094c;
+    background: #c1121f;
+    border-color: #c1121f;
     color: white;
 }
 
-/* --- Interactive Overlay Modal Module --- */
+/* --- Overlay Modal System --- */
 .modal-backdrop {
     display: none; 
     position: fixed;
@@ -290,8 +301,8 @@ h2 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(29, 53, 87, 0.4); 
-    backdrop-filter: blur(6px);
+    background-color: rgba(29, 53, 87, 0.45); 
+    backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
@@ -306,12 +317,11 @@ h2 {
     overflow-y: auto;
     position: relative;
     box-shadow: var(--shadow-lg);
-    border: 1px solid rgba(0,0,0,0.05);
-    animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: modalSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalSlide {
-    from { transform: translateY(20px); opacity: 0; }
+    from { transform: translateY(15px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
@@ -320,7 +330,6 @@ h2 {
     right: 1.25rem;
     top: 0.75rem;
     font-size: 2.25rem;
-    font-weight: 400;
     color: #a0aec0;
     cursor: pointer;
     z-index: 10;
@@ -329,7 +338,7 @@ h2 {
 }
 
 .modal-close:hover { color: var(--text-main); }
-.modal-hero-img { width: 100%; height: 280px; object-fit: cover; }
+.modal-hero-img { width: 100%; height: 290px; object-fit: cover; }
 .modal-body { padding: 2.5rem; }
 .modal-body h2 { border-bottom: 3px solid #f4a261; padding-bottom: 0.6rem; margin-bottom: 1.25rem; }
 
@@ -341,21 +350,21 @@ h2 {
 }
 
 .modal-body h4 { color: #1d3557; font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 0.6rem 0; text-transform: uppercase; letter-spacing: 0.5px;}
-.modal-body ul { list-style-position: inside; font-size: 1rem; color: #4a5568; padding-left: 0.25rem; }
+.modal-body ul { list-style-position: inside; font-size: 1rem; color: #4a5568; }
 .modal-body ul li { margin-bottom: 0.35rem; }
-.modal-body p { font-size: 1rem; color: #4a5568; white-space: pre-line; background: #fffcf9; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid #f4a261; box-shadow: inset 0 2px 4px rgba(0,0,0,0.01); line-height: 1.6;}
+.modal-body p { font-size: 1rem; color: #4a5568; white-space: pre-line; background: #fffdf9; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid #f4a261; line-height: 1.6;}
 
 .no-recipes {
     grid-column: 1 / -1;
     text-align: center;
     padding: 4rem 2rem;
     color: var(--text-muted);
-    background: #fffdfa;
+    background: #fffbf7;
     border: 2px dashed #dcd6cd;
     border-radius: var(--radius-lg);
 }
 
-/* --- Responsive Layout Breakpoint Rules --- */
+/* --- Responsive Engine Breakpoints --- */
 @media (min-width: 768px) {
     .container { grid-template-columns: 320px 1fr; }
     .recipes-grid { grid-template-columns: repeat(2, 1fr); }
