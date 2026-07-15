@@ -12,7 +12,6 @@ const modalBodyContent = document.getElementById('modal-body-content');
 
 const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&q=80&w=600";
 
-// --- 12 UPDATED DATA MODELS WITH METRICS ---
 const BUILT_IN_RECIPES = [
     {
         id: 1,
@@ -25,7 +24,7 @@ const BUILT_IN_RECIPES = [
     {
         id: 2,
         title: "Vibrant Avocado Toast",
-        prepTime: "10 mins", cookTime: "0 mins", servings: "2 servings",
+        prepTime: "5 mins", cookTime: "0 mins", servings: "2 servings",
         image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=600",
         ingredients: ["2 slices sourdough bread", "1 ripe avocado", "1 tbsp lemon juice", "Salt and pepper to taste", "Red pepper flakes"],
         instructions: "1. Toast bread until golden and crisp.\n2. Mash avocado with lemon juice, salt, and pepper.\n3. Spread over toast and top with red pepper flakes."
@@ -97,7 +96,7 @@ const BUILT_IN_RECIPES = [
     {
         id: 11,
         title: "Zesty Guacamole & Chips",
-        prepTime: "10 mins", cookTime: "0 mins", servings: "4 outputs",
+        prepTime: "10 mins", cookTime: "0 mins", servings: "4 servings",
         image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600",
         ingredients: ["3 ripe avocados", "1 lime, juiced", "1/2 cup diced onion", "1/4 cup chopped fresh cilantro", "1 diced roma tomato", "1 bag tortilla chips"],
         instructions: "1. Mash the avocado flesh in a medium bowl with a fork.\n2. Stir in the lime juice, salt, onions, and cilantro.\n3. Gently fold in the tomatoes.\n4. Let sit for 10 minutes before serving with chips."
@@ -121,7 +120,6 @@ if (!localStorage.getItem('myRecipes')) {
 recipeForm.addEventListener('submit', addRecipe);
 displayRecipes();
 
-// Close popup modal if user clicks gray backdrop zone
 window.onclick = function(event) {
     if (event.target === recipeModal) {
         closeModal();
@@ -132,9 +130,9 @@ function addRecipe(e) {
     e.preventDefault(); 
 
     const title = titleInput.value.trim();
-    const prepTime = prepInput.value.trim() || "N/A";
-    const cookTime = cookInput.value.trim() || "N/A";
-    const servings = servingsInput.value.trim() || "N/A";
+    const prepTime = prepInput.value.trim() || "10 mins";
+    const cookTime = cookInput.value.trim() || "15 mins";
+    const servings = servingsInput.value.trim() || "2 servings";
     const image = imageInput.value.trim() || DEFAULT_IMAGE;
     const ingredients = ingredientsInput.value.split('\n').map(i => i.trim()).filter(i => i !== '');
     const instructions = instructionsInput.value.trim();
@@ -157,9 +155,10 @@ function displayRecipes() {
     recipes.forEach(recipe => {
         const card = document.createElement('div');
         card.classList.add('recipe-card');
-        
-        // When clicking the card anywhere (except the delete button), open details popup modal
         card.setAttribute('onclick', `openModal(${recipe.id}, event)`);
+
+        const finalPrep = recipe.prepTime || "10 mins";
+        const finalCook = recipe.cookTime || "15 mins";
 
         card.innerHTML = `
             <div class="recipe-img-wrapper">
@@ -168,12 +167,10 @@ function displayRecipes() {
             <div class="recipe-content">
                 <h3>${recipe.title}</h3>
                 <div class="recipe-meta-tags">
-                    <span class="tag">⏱️ Prep: ${recipe.prepTime}</span>
-                    <span class="tag cook">🍳 Cook: ${recipe.cookTime}</span>
+                    <span class="tag">⏱️ Prep: ${finalPrep}</span>
+                    <span class="tag cook">🍳 Cook: ${finalCook}</span>
                 </div>
-                <div class="card-action-hint">Click to view details & instructions →</div>
-            </div>
-            <div class="btn-delete-container">
+                <div class="click-hint">View full details &rarr;</div>
                 <button class="btn-delete" onclick="deleteRecipe(${recipe.id}, event)">Delete Recipe</button>
             </div>
         `;
@@ -181,13 +178,15 @@ function displayRecipes() {
     });
 }
 
-// --- Popup Modal Window Action System ---
 window.openModal = function(id, event) {
-    // If they clicked the delete button, prevent the pop-up modal from opening
     if (event && event.target.classList.contains('btn-delete')) return;
 
     const recipe = recipes.find(r => r.id === id);
     if (!recipe) return;
+
+    const finalPrep = recipe.prepTime || "10 mins";
+    const finalCook = recipe.cookTime || "15 mins";
+    const finalServes = recipe.servings || "2 people";
 
     const ingredientsList = recipe.ingredients.map(ing => `<li>${ing}</li>`).join('');
 
@@ -195,16 +194,16 @@ window.openModal = function(id, event) {
         <img class="modal-hero-img" src="${recipe.image}" alt="${recipe.title}" onerror="this.src='${DEFAULT_IMAGE}'">
         <div class="modal-body">
             <h2>${recipe.title}</h2>
-            <div class="recipe-meta-tags">
-                <span class="tag">⏱️ Prep Time: ${recipe.prepTime}</span>
-                <span class="tag cook">🍳 Cook Time: ${recipe.cookTime}</span>
-                <span class="tag" style="background:#edf2f7; color:#4a5568;">👥 Servings: ${recipe.servings}</span>
+            <div class="modal-meta-row">
+                <span class="tag">⏱️ Prep Time: ${finalPrep}</span>
+                <span class="tag cook">🍳 Cook Time: ${finalCook}</span>
+                <span class="tag" style="background:#edf2f7; color:#4a5568; border-color:#e2e8f0;">👥 Servings: ${finalServes}</span>
             </div>
             
-            <h4>Ingredients Required:</h4>
+            <h4>Ingredients Required</h4>
             <ul>${ingredientsList}</ul>
 
-            <h4>Step-by-Step Instructions:</h4>
+            <h4>Step-by-Step Instructions</h4>
             <p>${recipe.instructions}</p>
         </div>
     `;
@@ -216,7 +215,7 @@ window.closeModal = function() {
 }
 
 window.deleteRecipe = function(id, event) {
-    if (event) event.stopPropagation(); // Stops the modal from firing when deleting
+    if (event) event.stopPropagation(); 
     recipes = recipes.filter(recipe => recipe.id !== id);
     saveToStorage();
     displayRecipes();

@@ -6,7 +6,7 @@
     <title>Culinary Keep - Your Digital Recipe Book</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +17,6 @@
     </header>
 
     <main class="container">
-        <!-- Recipe Form Section -->
         <section class="recipe-form-section">
             <h2>Create New Recipe</h2>
             <form id="recipe-form">
@@ -37,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="recipe-servings">Servings</label>
-                        <input type="text" id="recipe-servings" placeholder="e.g., 4 people" required>
+                        <input type="text" id="recipe-servings" placeholder="e.g., 4 pieces" required>
                     </div>
                 </div>
 
@@ -60,22 +59,18 @@
             </form>
         </section>
 
-        <!-- Recipe Display Section -->
         <section class="recipe-display-section">
             <h2>Your Recipes</h2>
             <div id="recipes-container" class="recipes-grid">
-                <!-- Recipes inject here -->
-            </div>
+                </div>
         </section>
     </main>
 
-    <!-- Interactive Recipe Detail Modal Pop-up -->
     <div id="recipe-modal" class="modal-backdrop">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <div id="modal-body-content">
-                <!-- Injected via JavaScript dynamically -->
-            </div>
+                </div>
         </div>
     </div>
 
