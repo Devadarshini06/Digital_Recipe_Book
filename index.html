@@ -1,79 +1,302 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Culinary Keep - Your Digital Recipe Book</title>
+
+    <title>Culinary Keep — Recipe Organizer</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>🍳 Culinary Keep</h1>
-        <p>Your personal digital recipe organizer</p>
-    </header>
-
-    <main class="container">
-        <section class="recipe-form-section">
-            <h2>Create New Recipe</h2>
-            <form id="recipe-form">
-                <div class="form-group">
-                    <label for="recipe-title">Recipe Title</label>
-                    <input type="text" id="recipe-title" placeholder="e.g., Classic Fudgy Brownies" required>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="recipe-prep">Prep Time</label>
-                        <input type="text" id="recipe-prep" placeholder="e.g., 15 mins" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipe-cook">Cook Time</label>
-                        <input type="text" id="recipe-cook" placeholder="e.g., 20 mins" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipe-servings">Servings</label>
-                        <input type="text" id="recipe-servings" placeholder="e.g., 4 pieces" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="recipe-image">Image URL</label>
-                    <input type="url" id="recipe-image" placeholder="Paste an image web link (optional)">
-                </div>
-
-                <div class="form-group">
-                    <label for="recipe-ingredients">Ingredients</label>
-                    <textarea id="recipe-ingredients" rows="4" placeholder="Enter ingredients (One per line)" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="recipe-instructions">Instructions</label>
-                    <textarea id="recipe-instructions" rows="4" placeholder="Describe the cooking steps clearly..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Save Recipe</button>
-            </form>
-        </section>
-
-        <section class="recipe-display-section">
-            <h2>Your Recipes</h2>
-            <div id="recipes-container" class="recipes-grid">
-                </div>
-        </section>
-    </main>
-
-    <div id="recipe-modal" class="modal-backdrop">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <div id="modal-body-content">
-                </div>
+<header class="site-header">
+    <div class="header-content">
+        <div>
+            <div class="brand">🍳 Culinary Keep</div>
+            <p>Your personal digital recipe collection</p>
         </div>
+
+        <button id="theme-toggle" class="theme-toggle" type="button">
+            🌙
+        </button>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- FORM -->
+    <section class="recipe-form-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">CREATE</span>
+                <h2 id="form-heading">New Recipe</h2>
+            </div>
+        </div>
+
+        <form id="recipe-form">
+
+            <div class="form-group">
+                <label for="recipe-title">Recipe Title</label>
+                <input
+                    type="text"
+                    id="recipe-title"
+                    placeholder="e.g. Classic Fudgy Brownies"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="recipe-category">Category</label>
+
+                <select id="recipe-category">
+                    <option value="Breakfast">🥞 Breakfast</option>
+                    <option value="Lunch">🥗 Lunch</option>
+                    <option value="Dinner">🍝 Dinner</option>
+                    <option value="Dessert">🍰 Dessert</option>
+                    <option value="Snack">🍿 Snack</option>
+                    <option value="Drinks">🥤 Drinks</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="recipe-prep">Prep</label>
+                    <input
+                        type="text"
+                        id="recipe-prep"
+                        placeholder="15 mins"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="recipe-cook">Cook</label>
+                    <input
+                        type="text"
+                        id="recipe-cook"
+                        placeholder="20 mins"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="recipe-servings">Servings</label>
+                    <input
+                        type="text"
+                        id="recipe-servings"
+                        placeholder="4"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="recipe-image">Image URL</label>
+
+                <input
+                    type="url"
+                    id="recipe-image"
+                    placeholder="https://example.com/food.jpg"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="recipe-ingredients">Ingredients</label>
+
+                <textarea
+                    id="recipe-ingredients"
+                    rows="5"
+                    placeholder="One ingredient per line..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="recipe-instructions">Instructions</label>
+
+                <textarea
+                    id="recipe-instructions"
+                    rows="6"
+                    placeholder="Describe the cooking steps..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    <span>＋</span> Save Recipe
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    id="cancel-edit"
+                    hidden
+                >
+                    Cancel Edit
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+
+    <!-- RECIPES -->
+    <section class="recipe-display-section">
+
+        <div class="recipes-header">
+
+            <div>
+                <span class="eyebrow">COLLECTION</span>
+
+                <h2>
+                    Your Recipes
+                    <span id="recipe-count" class="count-badge">0</span>
+                </h2>
+            </div>
+
+            <div class="recipe-controls">
+
+                <div class="search-box">
+                    <span>🔍</span>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search recipes..."
+                    >
+                </div>
+
+                <select id="sort-select">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                    <option value="favorites">Favorites</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div class="category-filters">
+
+            <button class="category-btn active" data-category="All">
+                All
+            </button>
+
+            <button class="category-btn" data-category="Breakfast">
+                🥞 Breakfast
+            </button>
+
+            <button class="category-btn" data-category="Lunch">
+                🥗 Lunch
+            </button>
+
+            <button class="category-btn" data-category="Dinner">
+                🍝 Dinner
+            </button>
+
+            <button class="category-btn" data-category="Dessert">
+                🍰 Dessert
+            </button>
+
+            <button class="category-btn" data-category="Snack">
+                🍿 Snack
+            </button>
+
+            <button class="category-btn" data-category="Drinks">
+                🥤 Drinks
+            </button>
+
+        </div>
+
+
+        <div id="recipes-container" class="recipes-grid"></div>
+
+    </section>
+
+</main>
+
+
+<!-- MODAL -->
+
+<div id="recipe-modal" class="modal-backdrop">
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            id="modal-close"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <div id="modal-body-content"></div>
+
     </div>
 
-    <script src="script.js"></script>
+</div>
+
+
+<!-- DELETE CONFIRMATION -->
+
+<div id="delete-modal" class="modal-backdrop">
+
+    <div class="confirm-box">
+
+        <div class="confirm-icon">🗑️</div>
+
+        <h3>Delete Recipe?</h3>
+
+        <p>
+            This recipe will be permanently removed from your collection.
+        </p>
+
+        <div class="confirm-actions">
+
+            <button
+                id="cancel-delete"
+                class="btn-cancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="confirm-delete"
+                class="btn-danger"
+            >
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
+```
